@@ -1,6 +1,12 @@
 # allow cors - access-control-allow-origin
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/dlnefnodgegdifkaiklkedafadijfekp?style=for-the-badge&logo=googlechrome&logoColor=white&label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/dlnefnodgegdifkaiklkedafadijfekp)
+[![GitHub stars](https://img.shields.io/github/stars/FTS18/allow-cors?style=for-the-badge&logo=github)](https://github.com/FTS18/allow-cors/stargazers)
+
 lightweight manifest v3 chrome extension to modify request/response headers, bypass cors rules, strip security settings, and configure custom redirects during local web development.
+
+**Website:** [https://allowcors.pages.dev](https://allowcors.pages.dev)  
+**Made by:** [fts18](https://github.com/fts18)
 
 ---
 
