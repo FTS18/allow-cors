@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>allow cors - access-control-allow-origin</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d30;
+      border-radius: 0px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #787880;
+    }
+
+    :root {
+      --bg: #0f0f11;
+      --bg-card: #16161a;
+      --border: #222225;
+      --text: #e1e1e6;
+      --text-muted: #787880;
+      --green: #30d158;
+      --yellow: #ffb86c;
+      --red: #ff453a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .version {
+      color: var(--text-muted);
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #a1a1a6;
+    }
+
+    .btn-container {
+      margin-bottom: 24px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 11px;
+    }
+
+    .btn:hover {
+      background: #1c1c21;
+      border-color: var(--text-muted);
+    }
+
+    .btn-primary {
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    .btn-primary:hover {
+      background: rgba(48, 209, 88, 0.05);
+    }
+
+    .section {
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      color: var(--green);
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      text-transform: lowercase;
+    }
+
+    .sub-section {
+      margin-bottom: 20px;
+    }
+
+    .sub-title {
+      font-weight: bold;
+      color: var(--yellow);
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    ul, ol {
+      padding-left: 18px;
+      margin-bottom: 12px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    code {
+      background: #1c1c21;
+      padding: 1px 4px;
+      border: 1px solid var(--border);
+      color: var(--yellow);
+      font-size: 11px;
+    }
+
+    pre {
+      background: #0f0f11;
+      border: 1px solid var(--border);
+      padding: 10px;
+      overflow-x: auto;
+      margin: 8px 0 12px 0;
+    }
+
+    pre code {
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding-top: 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .warning-box {
+      border: 1px solid var(--red);
+      background: rgba(255, 69, 58, 0.02);
+      padding: 12px;
+      margin-bottom: 16px;
+      color: #e1e1e6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <span class="title">allow cors - access-control-allow-origin</span>
+      </div>
+      <span class="version">v1.0</span>
+    </header>
+
+    <p>
+      modify request/response headers, bypass cors constraints, strip security configurations, and configure redirect routes locally during web development.
+    </p>
+
+    <div class="btn-container">
+      <a href="https://chromewebstore.google.com/detail/dlnefnodgegdifkaiklkedafadijfekp" target="_blank" class="btn btn-primary">[chrome web store]</a>
+      <a href="https://github.com/FTS18/allow-cors" target="_blank" class="btn">[github]</a>
+    </div>
+
+    <div class="section">
+      <div class="section-title">core features</div>
+      <ul>
+        <li><strong>cors bypass:</strong> sets access-control-allow-origin, methods, and headers dynamically.</li>
+        <li><strong>credentials reflect:</strong> queries the active tab domain and matches the origin to bypass wildcard credential errors.</li>
+        <li><strong>auto-disable:</strong> schedules alarms in the background to automatically switch off the extension after 1, 10, 30, or 60 minutes.</li>
+        <li><strong>request redirect:</strong> intercepts matches and maps them to local mockup servers (e.g. localhost).</li>
+        <li><strong>csp strip:</strong> removes content-security-policy response headers.</li>
+        <li><strong>x-frame strip:</strong> removes x-frame-options to allow embedded content.</li>
+        <li><strong>sharedarraybuffer:</strong> adds coop and coep headers to enable cross-origin isolation.</li>
+        <li><strong>header strip:</strong> removes referer and origin request headers.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">detailed guides & operations</div>
+
+      <div class="sub-section">
+        <div class="sub-title">1. understanding credentials vs wildcard (*) block</div>
+        <p>
+          when a fetch request has its credentials mode set to <code>include</code> (e.g. sending cookies or basic auth), the browser throws this error:
+        </p>
+        <pre><code>Access to fetch at 'api.site.com' has been blocked by CORS policy: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.</code></pre>
+        <p>
+          <strong>how the extension fixes it:</strong> when <code>allow credentials</code> is checked, the background worker determines the origin of your active tab (e.g. <code>https://localhost:3000</code> or <code>https://my-app.vercel.app</code>) and injects it as the exact response header value for <code>Access-Control-Allow-Origin</code>, bypassing the browser constraint.
+        </p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">2. configuring url redirection maps</div>
+        <p>
+          you can map remote files, third-party api calls, or tracking scripts to point directly to your local development assets.
+        </p>
+        <p>
+          <strong>how to use:</strong>
+        </p>
+        <ul>
+          <li><strong>from:</strong> use wildcards to catch target assets. example: <code>*analytics.js*</code> or <code>*zoologyfibre.com/watch*</code></li>
+          <li><strong>to:</strong> configure the local web server target. example: <code>http://localhost:3000/mocks/analytics.js</code></li>
+        </ul>
+        <p>
+          once added, matching requests will be intercepted and served from the target url, preventing production api dependencies from crashing local test suites.
+        </p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">3. auto-disable alarms & security protection</div>
+        <div class="warning-box">
+          <strong>security alert:</strong> leaving cors bypass on permanently exposes your browser to cross-site request forgery (csrf) or cross-site scripting (xss) vulnerabilities when browsing general websites (e.g. online banking, emails).
+        </div>
+        <p>
+          <strong>how to use:</strong> set the <code>auto-disable</code> dropdown to a desired duration (e.g., 10 or 30 minutes). the background worker schedules a system wakeup tick using the MV3 alarms API. when it triggers, the extension switches off automatically, returning your browser to normal secure behavior.
+        </p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">4. sharedarraybuffer & cross-origin isolation</div>
+        <p>
+          modern browser APIs (such as multithreading using WebAssembly or shared memory buffers) require the document to be cross-origin isolated.
+        </p>
+        <p>
+          <strong>how the extension fixes it:</strong> checking <code>support sharedarraybuffer</code> appends the required headers to the HTML document response:
+        </p>
+        <pre><code>Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp</code></pre>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">5. referer & origin header stripping</div>
+        <p>
+          some servers check request headers and block queries that originate from other hostnames (like localhost).
+        </p>
+        <p>
+          <strong>how the extension fixes it:</strong> toggling <code>strip referer/origin headers</code> intercepts request headers dynamically before transmission and drops <code>referer</code> and <code>origin</code> completely, letting you query strict api gateways.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">local setup</div>
+      <ol>
+        <li style="margin-bottom: 6px;">clone the code repository: <code>git clone https://github.com/FTS18/allow-cors.git</code></li>
+        <li style="margin-bottom: 6px;">go to <code>chrome://extensions/</code> in google chrome.</li>
+        <li style="margin-bottom: 6px;">enable developer mode (top right toggle).</li>
+        <li style="margin-bottom: 6px;">click load unpacked and select the <code>extension</code> folder.</li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      allow cors / <a href="privacy.html">privacy policy</a> / <a href="support.html">support & issues</a> / v1.0
+    </div>
+  </div>
+</body>
+</html>

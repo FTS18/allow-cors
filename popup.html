@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d30;
+      border-radius: 0px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #787880;
+    }
+
+    body {
+      width: 300px;
+      background: #0f0f11;
+      color: #e1e1e6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      margin: 0;
+      padding: 12px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222225;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #16161a;
+      border: 1px solid #222225;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    .status-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .status-label {
+      color: #787880;
+    }
+    .status-val {
+      font-weight: bold;
+      color: #ff453a;
+    }
+    .status-val.active {
+      color: #30d158;
+    }
+    .toggle-container {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+    .toggle-container input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .custom-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 18px;
+      width: 18px;
+      background-color: transparent;
+      border: 1px solid #787880;
+    }
+    .toggle-container input:checked + .custom-box {
+      background-color: #30d158;
+      border-color: #30d158;
+    }
+    .toggle-container input:checked + .custom-box:after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 8px;
+      border: solid #0f0f11;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .section-title {
+      color: #787880;
+      margin-bottom: 6px;
+      font-weight: bold;
+      border-bottom: 1px solid #1c1c1f;
+      padding-bottom: 2px;
+    }
+    .section {
+      margin-bottom: 12px;
+    }
+    .counter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      color: #787880;
+    }
+    .reset-btn {
+      background: transparent;
+      border: none;
+      color: #ff453a;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      font-family: inherit;
+      font-size: inherit;
+    }
+    .timer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      color: #787880;
+    }
+    .countdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      color: #ff453a;
+    }
+    .input-select {
+      background: #16161a;
+      border: 1px solid #222225;
+      color: #e1e1e6;
+      font-family: inherit;
+      font-size: 10px;
+      padding: 2px;
+      outline: none;
+    }
+    .settings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .settings-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .mode-toggle-group {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .btn {
+      background: #1c1c1e;
+      border: 1px solid #2d2d30;
+      color: #787880;
+      padding: 3px 6px;
+      font-family: inherit;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .btn.active {
+      color: #e1e1e6;
+      border-color: #e1e1e6;
+      background: #252528;
+    }
+    .btn-action {
+      color: #30d158;
+      border-color: #30d158;
+    }
+    .domain-input-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .input-text {
+      flex: 1;
+      background: #16161a;
+      border: 1px solid #222225;
+      color: #e1e1e6;
+      font-family: inherit;
+      font-size: 10px;
+      padding: 2px 4px;
+      outline: none;
+    }
+    .input-text:focus {
+      border-color: #787880;
+    }
+    .domains-list {
+      max-height: 80px;
+      overflow-y: auto;
+      border: 1px solid #222225;
+      background: #16161a;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .domain-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      background: #1c1c1e;
+      padding: 2px 4px;
+    }
+    .remove-domain-btn {
+      color: #ff453a;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 10px;
+    }
+    .quick-toggle-row {
+      margin-bottom: 8px;
+    }
+    .quick-btn {
+      width: 100%;
+      text-align: center;
+      padding: 4px;
+      font-size: 10px;
+    }
+    .empty-text {
+      color: #545456;
+      text-align: center;
+      padding: 8px 0;
+      font-style: italic;
+    }
+    /* Redirect layout styles */
+    .redirect-input-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .redirects-list {
+      max-height: 85px;
+      overflow-y: auto;
+      border: 1px solid #222225;
+      background: #16161a;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .redirect-item {
+      display: flex;
+      flex-direction: column;
+      font-size: 9px;
+      background: #1c1c1e;
+      padding: 4px;
+      border: 1px solid #2d2d30;
+      position: relative;
+    }
+    .redirect-item span {
+      word-break: break-all;
+    }
+    .remove-redir-btn {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      color: #ff453a;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="title">allow cors</span>
+    <span style="color: #787880">v1.0</span>
+  </div>
+
+  <div class="status-row">
+    <div class="status-info">
+      <span class="status-label">status</span>
+      <span class="status-val" id="statusVal">disabled</span>
+    </div>
+    <label class="toggle-container">
+      <input type="checkbox" id="toggleBypass">
+      <span class="custom-box"></span>
+    </label>
+  </div>
+
+  <div class="counter-row">
+    <span>requests modified: <span id="counterVal" style="color: #e1e1e6; font-weight: bold;">0</span></span>
+    <button class="reset-btn" id="resetCounter">[reset]</button>
+  </div>
+
+  <div class="timer-row">
+    <span>auto-disable:</span>
+    <select class="input-select" id="selTimer">
+      <option value="never">never</option>
+      <option value="1">1 minute</option>
+      <option value="10">10 minutes</option>
+      <option value="30">30 minutes</option>
+      <option value="60">1 hour</option>
+    </select>
+  </div>
+
+  <div class="countdown-row" id="countdownRow" style="display: none;">
+    <span>auto-disabling in:</span>
+    <span id="countdownVal" style="color: #ff453a; font-weight: bold;">--:--</span>
+  </div>
+
+  <div class="section">
+    <div class="section-title">settings</div>
+    <div class="settings-list">
+      <label class="settings-item">
+        <input type="checkbox" id="chkCredentials">
+        <span>allow credentials</span>
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="chkCsp">
+        <span>strip csp</span>
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="chkXFrame">
+        <span>strip x-frame</span>
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="chkSharedArray">
+        <span>support sharedarraybuffer</span>
+      </label>
+      <label class="settings-item">
+        <input type="checkbox" id="chkStripHeaders">
+        <span>strip referer/origin headers</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">rules mode</div>
+    <div class="mode-toggle-group">
+      <button class="btn" id="btnBlocklist">blocklist</button>
+      <button class="btn" id="btnAllowlist">allowlist</button>
+    </div>
+
+    <div class="quick-toggle-row">
+      <button class="btn quick-btn" id="btnQuickToggle">[toggle current site]</button>
+    </div>
+
+    <div class="domain-input-row">
+      <input type="text" class="input-text" id="txtDomain" placeholder="add domain (e.g. site.com)">
+      <button class="btn btn-action" id="btnAddDomain">[add]</button>
+    </div>
+
+    <div class="domains-list" id="domainsList">
+      <!-- items dynamically populated -->
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">redirects</div>
+    <div class="redirect-input-col">
+      <input type="text" class="input-text" id="txtRedirFrom" placeholder="from url pattern (e.g. *analytics*)">
+      <input type="text" class="input-text" id="txtRedirTo" placeholder="to url (e.g. http://localhost/mock.js)">
+      <button class="btn btn-action" id="btnAddRedir" style="width: 100%; margin-top: 4px;">[add redirect]</button>
+    </div>
+    <div class="redirects-list" id="redirectsList" style="margin-top: 8px;">
+      <!-- items dynamically populated -->
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

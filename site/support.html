@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>allow cors - support</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    :root {
+      --bg: #0f0f11;
+      --bg-card: #16161a;
+      --border: #222225;
+      --text: #e1e1e6;
+      --text-muted: #787880;
+      --green: #30d158;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 11px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .btn:hover {
+      background: #1c1c21;
+      border-color: var(--text-muted);
+    }
+
+    .section {
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      color: var(--green);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      text-transform: lowercase;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #a1a1a6;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: underline;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      padding-top: 16px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="title">allow cors - support & issues</span>
+    </header>
+
+    <a href="index.html" class="btn">[back to home]</a>
+
+    <div class="section">
+      <div class="section-title">reporting bugs & request features</div>
+      <p>
+        if you encounter an issue or want to suggest new options, please open a ticket on our github issue tracker:
+      </p>
+      <p>
+        <a href="https://github.com/FTS18/allow-cors/issues" target="_blank">open an issue on github</a>
+      </p>
+      <p>
+        when reporting a bug, please include:
+      </p>
+      <ul style="padding-left: 18px; margin-bottom: 12px;">
+        <li style="margin-bottom: 4px;">the chrome version you are using.</li>
+        <li style="margin-bottom: 4px;">a screenshot of the target website's console logs showing the cors/csp blocking error.</li>
+        <li style="margin-bottom: 4px;">your extension configuration settings.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">contributions</div>
+      <p>
+        this project is open source. if you want to fix a bug or add compatibility configurations, feel free to fork the repository and submit a pull request.
+      </p>
+    </div>
+
+    <div class="footer">
+      allow cors / support / v1.0
+    </div>
+  </div>
+</body>
+</html>

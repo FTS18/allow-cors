@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>allow cors - access-control-allow-origin / welcome</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d30;
+      border-radius: 0px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #787880;
+    }
+    body {
+      background: #0f0f11;
+      color: #e1e1e6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .header {
+      border-bottom: 1px solid #222225;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .intro {
+      margin-bottom: 24px;
+      color: #787880;
+    }
+    .section-title {
+      font-weight: bold;
+      color: #30d158;
+      margin-bottom: 8px;
+      text-transform: lowercase;
+    }
+    .box {
+      border: 1px solid #222225;
+      background: #16161a;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .pin-box {
+      border-color: #30d158;
+      background: rgba(48, 209, 88, 0.03);
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .footer {
+      border-top: 1px solid #222225;
+      margin-top: 40px;
+      padding-top: 12px;
+      color: #545456;
+      text-align: center;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="title">allow cors - access-control-allow-origin</span>
+    <span>welcome page</span>
+  </div>
+
+  <p class="intro">
+    thanks for installing. <strong>allow cors</strong> is a flat, lightweight developer utility to bypass cors policies, strip security headers, and configure custom redirects.
+  </p>
+
+  <div class="box pin-box">
+    <div class="section-title" style="color: #30d158; font-weight: 800;">important: pin the extension</div>
+    <p style="margin-bottom: 8px;">
+      to make toggling the extension and managing rules easy, please pin it to your browser toolbar:
+    </p>
+    <ul>
+      <li>click the puzzle piece icon (extensions menu) in the top-right of chrome.</li>
+      <li>find <strong>allow cors</strong> in the list.</li>
+      <li>click the pin icon next to it so it stays visible.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <div class="section-title">core features overview</div>
+    <ul>
+      <li>
+        <strong>smart credentials bypass:</strong> automatically matches the origin of your active tab (e.g., vercel or localhost) and injects <code>access-control-allow-credentials: true</code> to support secure requests.
+      </li>
+      <li>
+        <strong>auto-disable alarm:</strong> set a timer (e.g. 10m) to automatically turn off the extension. this prevents security issues if you forget to disable it while checking emails or doing personal banking.
+      </li>
+      <li>
+        <strong>redirect mapping:</strong> map remote API or script requests (like analytics trackers or production files) to local mocks (e.g., <code>http://localhost:3000</code>).
+      </li>
+      <li>
+        <strong>modes selection:</strong> switch between <code>blocklist</code> (bypass all except custom domains) and <code>allowlist</code> (only bypass specific domains).
+      </li>
+      <li>
+        <strong>security header stripping:</strong> toggle to strip Content Security Policy (CSP) and X-Frame-Options to allow framing/embedding.
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    allow cors - access-control-allow-origin / flat minimal utility / v1.0
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "allow cors - access-control-allow-origin",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "bypass cors (access-control-allow-origin) errors, strip csp and x-frame-options security headers, and redirect api requests.",
+  "permissions": [
+    "alarms",
+    "declarativeNetRequest",
+    "storage",
+    "tabs",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
